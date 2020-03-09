@@ -14,7 +14,7 @@ class AddApiTokenToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('api_token', 80)->after('password')
+            $table->text('api_token')->after('password')
                 ->unique()
                 ->nullable()
                 ->default(null);
