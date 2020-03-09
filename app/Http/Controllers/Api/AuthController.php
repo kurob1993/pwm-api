@@ -29,7 +29,12 @@ class AuthController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('PWM API')->accessToken;
+        $success['api_token'] =  $user->createToken('PWM API')->accessToken;
+
+        $user = User::find($user->id);
+        $user->api_token = $user->createToken('PWM API')->accessToken;
+        $user->save();
+        
         return response()->json(['success' => $success], $this->successStatus);
     }
 
@@ -38,7 +43,12 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
-            $success['token'] =  $user->createToken('PWM API')->accessToken;
+            $success['api_token'] =  $user->createToken('PWM API')->accessToken;
+
+            $user = User::find($user->id);
+            $user->api_token = $user->createToken('PWM API')->accessToken;
+            $user->save();
+
             return response()->json(['success' => $success], $this->successStatus);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
