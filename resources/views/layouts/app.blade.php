@@ -34,6 +34,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                        <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item {{ Request::is('message') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('message') }}">Message</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

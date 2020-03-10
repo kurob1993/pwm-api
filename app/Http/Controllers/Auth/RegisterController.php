@@ -64,10 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $token = User::find($user->id);
+        $token->api_token = $token->createToken('PWM API')->accessToken;
+        $token->save();
+
+        return $user;
     }
 }
