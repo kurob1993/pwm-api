@@ -24,5 +24,6 @@ Route::prefix('v1')->group(function () {
     Route::group(['middleware' => 'auth:api'], function () {
         Route::post('getUser', 'Api\AuthController@getUser');
         Route::post('message/store', 'Api\MessageController@store');
+        Route::get('message/show', 'Api\MessageController@show');
     });
 });

@@ -35,4 +35,14 @@ class MessageController extends Controller
 
         return response()->json(['success' => $success], $this->successStatus);
     }
+
+    public function show()
+    {
+        $user = Auth::user();
+        $message = Message::where('user_id', $user->id)
+            ->where('stage_id', 1)
+            ->first();
+
+        return response()->json(['success' => $message], $this->successStatus);
+    }
 }
