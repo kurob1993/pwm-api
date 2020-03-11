@@ -25,5 +25,7 @@ Route::prefix('v1')->group(function () {
         Route::post('getUser', 'Api\AuthController@getUser');
         Route::post('message/store', 'Api\MessageController@store');
         Route::get('message/show', 'Api\MessageController@show');
+        Route::get('message/sending', 'Api\MessageController@sending');
+        Route::post('message/sended', 'Api\MessageController@sended');
     });
 });

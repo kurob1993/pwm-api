@@ -45,4 +45,42 @@ class MessageController extends Controller
 
         return response()->json(['success' => $message], $this->successStatus);
     }
+
+    public function sending()
+    {
+        $user = Auth::user();
+        $message = Message::where('user_id', $user->id)
+            ->where('stage_id', 1)
+            ->first();
+
+        if ($message) {
+            $message->stage_id = 2;
+            $message->save();
+        }
+
+        return response()->json(['success' => $message], $this->successStatus);
+    }
+
+    public function sended(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'id' => 'required|numeric'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
+        $message = Message::find($request->input('id'));
+
+        if ($message) {
+            $message->stage_id = 3;
+            $message->save();
+        }
+
+        return response()->json(['success' => $message], $this->successStatus);
+    }
 }
