@@ -18,7 +18,7 @@ class AuthController extends Controller
             $request->all(),
             [
                 'name' => 'required',
-                'email' => 'required|email',
+                'email' => 'required|unique:users,email',
                 'password' => 'required',
                 'c_password' => 'required|same:password',
             ]
