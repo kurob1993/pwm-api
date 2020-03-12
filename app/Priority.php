@@ -10,4 +10,10 @@ class Priority extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message', 'user_id');
+    }
+
 }

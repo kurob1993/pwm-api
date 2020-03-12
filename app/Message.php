@@ -19,4 +19,9 @@ class Message extends Model
     {
         return $this->belongsTo('App\Stage');
     }
+
+    public function priority()
+    {
+        return $this->belongsTo('App\Priority', 'user_id');
+    }
 }
