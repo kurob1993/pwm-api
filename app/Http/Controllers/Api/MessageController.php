@@ -49,13 +49,24 @@ class MessageController extends Controller
     public function sending()
     {
         $user = Auth::user();
-        $message = Message::where('user_id', $user->id)
-            ->where('stage_id', 1)
-            ->first();
+        $priority = Auth::user()->priority;
 
+        if ($priority->priority) {
+            $message = Message::where('user_id', $user->id)
+                ->where('stage_id', 1)
+                ->first();
+        }else{
+            $message = Message::select( 'messages.*')
+                ->join('priorities', 'priorities.user_id', '=', 'messages.user_id')
+                ->where('messages.stage_id',1)
+                ->orderBy('priorities.priority','DESC')
+                ->first();
+        }
+        
         if ($message) {
-            $message->stage_id = 2;
-            $message->save();
+            $msg = Message::find($message->id);
+            $msg->stage_id = 2;
+            $msg->save();
         }
 
         return response()->json(['success' => $message], $this->successStatus);
