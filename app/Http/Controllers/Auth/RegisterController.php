@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Priority;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -68,11 +69,17 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'is_admin' => false
         ]);
 
         $token = User::find($user->id);
         $token->api_token = $token->createToken('PWM API')->accessToken;
         $token->save();
+
+        $priority = new Priority();
+        $priority->user_id = $user->id;
+        $priority->priority = false;
+        $priority->save();
 
         return $user;
     }

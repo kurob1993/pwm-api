@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Priority;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
@@ -28,12 +29,19 @@ class AuthController extends Controller
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
+        $input['is_admin'] = false;
+        
         $user = User::create($input);
         $success['api_token'] =  $user->createToken('PWM API')->accessToken;
 
         $user = User::find($user->id);
         $user->api_token = $user->createToken('PWM API')->accessToken;
         $user->save();
+
+        $priority = new Priority();
+        $priority->user_id = $user->id;
+        $priority->priority = false;
+        $priority->save();
         
         return response()->json(['success' => $success], $this->successStatus);
     }
