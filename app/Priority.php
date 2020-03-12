@@ -16,4 +16,20 @@ class Priority extends Model
         return $this->hasMany('App\Message', 'user_id');
     }
 
+    public function getLabel()
+    {
+        $label = '';
+        switch ($this->priority) {
+            case 0:
+                $label = '<span class="badge badge-secondary">Basic</span>';
+                break;
+
+            case 1:
+                $label = '<span class="badge badge-primary">Priority</span>';
+                break;
+        }
+
+        return $label;
+    }
+
 }
