@@ -93,7 +93,7 @@
         @endif
 
         <div class="content">
-            <div class="title m-b-md">
+            <div class="title col align-self-center">
                 Programmatic Whatsapp Messenger
             </div>
             <footer>
