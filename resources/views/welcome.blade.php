@@ -93,11 +93,11 @@
         @endif
 
         <div class="content">
-            <div class="title col align-self-center">
+            <div class="h1 col align-self-center mb-5">
                 Programmatic Whatsapp Messenger
             </div>
             <footer>
-                <div class="col-md-auto fixed-bottom">
+                <div class="col-md-auto">
                     <p>PWM tidak berafiliasi dengan WhatsApp, Facebook, atau mitra pihak ketiga mana pun dengan cara apa pun.
                     Merupakan tanggung jawab Anda sepenuhnya untuk mematuhi peraturan WhatsApp dan undang-undang apa pun yang Anda ikuti.
                     Anda menggunakan perangkat lunak kami dengan risiko Anda sendiri.
