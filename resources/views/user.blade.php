@@ -31,11 +31,20 @@
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->is_admin}}</td>
                                     <td>
-                                        @if ($item->priority->priority)
-                                        <a class="btn btn-sm btn-secondary" href="{{ route('update.priority',$item->id) }}">Switch to Basic</a>
-                                        @else
-                                        <a class="btn btn-sm btn-primary" href="{{ route('update.priority',$item->id) }}">Switch to Priority</a>
-                                        @endif
+                                        <form action="{{ route('update.priority',$item->id) }}" method="POST">
+                                            @method('PUT')
+                                            @csrf
+                                            @if ($item->priority->priority)
+                                            <button class="btn btn-sm btn-secondary" type="submit"
+                                                href="{{ route('update.priority',$item->id) }}">
+                                                Switch to Basic</button>
+                                            @else
+                                            <button class="btn btn-sm btn-primary" type="submit"
+                                                href="{{ route('update.priority',$item->id) }}">
+                                                Switch to Priority</button>
+                                            @endif
+                                        </form>
+                                        
                                     </td>
                                 </tr>
                             @endforeach

@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('user', compact('user'));
     }
 
-    public function updatePriority($id)
+    public function updatePriority(Request $request, $id)
     {
         if (!Auth::User()->is_admin) {
             return redirect('home')->with('status', 'You do not have access');
