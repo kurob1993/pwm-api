@@ -34,9 +34,9 @@ class UserController extends Controller
         $priority->priority = $priority->priority ? false : true;
 
         if($priority->save()){
-            return redirect()->back()->with('status', 'data successfully changed');
+            return redirect('users')->with('status', 'data successfully changed');
         }else{
-            return redirect()->back()->with('status', 'data failed to change');
+            return redirect('users')->with('status', 'data failed to change');
         }
         
     }
