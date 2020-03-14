@@ -32,12 +32,12 @@ class UserController extends Controller
 
         $priority = Priority::where('user_id',$id)->first();
         $priority->priority = $priority->priority ? false : true;
-
+        $msg = '';
         if($priority->save()){
-            return redirect('users')->with('status', 'data successfully changed');
+            $msg = 'data successfully changed';
         }else{
-            return redirect('users')->with('status', 'data failed to change');
+            $msg = 'data failed to change';
         }
-        
+        return redirect('users')->with('status', $msg);
     }
 }
