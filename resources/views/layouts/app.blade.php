@@ -38,9 +38,17 @@
                         <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
+                        
                         <li class="nav-item {{ Request::is('message') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('message') }}">Message</a>
                         </li>
+
+                        @if (Auth::user()->is_admin)
+                        <li class="nav-item {{ Request::is('users') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('users') }}">Users</a>
+                        </li>
+                        @endif
+                        
                     </ul>
                     @endif
                     <!-- Right Side Of Navbar -->
