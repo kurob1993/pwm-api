@@ -44,7 +44,7 @@
                             @foreach ($message as $item)
                             <tr>
                                 <td scope="row">{{$item->number}}</td>
-                                <td>{{$item->text}}</td>
+                                <td width="60%">{{ Str::limit($item->text, 100) }}</td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{!! $item->stage->getLabel() !!}</td>
                             </tr>

@@ -35,7 +35,7 @@ class MessageController extends Controller
                         }
                     }
                 ],
-                'text' => ['required']
+                'text' => ['required','max:1000']
             ]
         );
 

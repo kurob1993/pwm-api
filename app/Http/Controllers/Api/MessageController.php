@@ -17,8 +17,15 @@ class MessageController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'number' => 'required|numeric',
-                'text' => 'required'
+                'number' => [
+                    'required','numeric','digits_between:12,15',
+                    function ($attribute, $value, $fail) {
+                        if (!Str::of($value)->is('62*')) {
+                            $fail($attribute.' is invalid. ext: 62**********');
+                        }
+                    }
+                ],
+                'text' => ['required','max:1000']
             ]
         );
 
