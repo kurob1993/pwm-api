@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Message;
+use Illuminate\Support\Str;
 
 class MessageController extends Controller
 {
@@ -14,6 +15,8 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -33,7 +36,10 @@ class MessageController extends Controller
             return response()->json(['error' => $validator->errors()], 401);
         }
 
-        $user = Auth::user();
+        if (!$user->canSendMessage()) {
+            return response()->json(['error' => 'Your quota is limit'], 401);
+        }
+        
         $success =  $request->input();
         $success['user_id'] =  $user->id;
         $success['stage_id'] =  1;

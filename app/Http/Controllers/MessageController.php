@@ -19,11 +19,14 @@ class MessageController extends Controller
     {
         $user = Auth::user();
         $message = Message::where('user_id',$user->id)->paginate(10);
+
         return view('message', ['message' => $message]);
     }
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -43,7 +46,10 @@ class MessageController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $user = Auth::user();
+        if (!$user->canSendMessage()) {
+            return redirect()->back()->withErrors('Your quota is limit');
+        }
+        
         $success =  $request->input();
         $success['user_id'] =  $user->id;
         $success['stage_id'] =  1;

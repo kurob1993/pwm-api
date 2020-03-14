@@ -34,19 +34,23 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Number</th>
-                                <th>Text</th>
-                                <th>Create By</th>
+                                <th width="60%">Text</th>
+                                <th width="10%">Create By</th>
                                 <th>Stage</th>
+                                <th width="10%">Create At</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($message as $item)
+                            @foreach ($message as $key => $item)
                             <tr>
-                                <td scope="row">{{$item->number}}</td>
-                                <td width="60%">{{ Str::limit($item->text, 100) }}</td>
+                                <td scope="row">{{$key+1}}</td>
+                                <td>{{$item->number}}</td>
+                                <td>{{ Str::limit($item->text, 100) }}</td>
                                 <td>{{$item->user->name}}</td>
                                 <td>{!! $item->stage->getLabel() !!}</td>
+                                <td>{{ $item->created_at}}</td>
                             </tr>
                             @endforeach
                         </tbody>

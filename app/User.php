@@ -47,4 +47,32 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Priority');
     }
+
+    public function canSendMessage()
+    {
+        $msg = $this->messages()->messagePerDay($this->id);
+
+        if ($this->priority->priority) {
+            if ($msg < 1000) {
+                return true;
+            }
+        }else{
+            if ($msg < 10) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function messageQuota()
+    {
+        if ($this->priority->priority) {
+            return 1000;
+        }else{
+            return 100;
+        }
+
+        return 0;
+    }
 }

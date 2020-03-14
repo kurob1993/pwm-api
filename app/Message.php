@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Message extends Model
 {
@@ -23,5 +24,12 @@ class Message extends Model
     public function priority()
     {
         return $this->belongsTo('App\Priority', 'user_id');
+    }
+
+    public function scopeMessagePerDay($query, $id)
+    {
+        return $query->where('user_id', $id)
+            ->whereRaw("DATE_FORMAT(created_at,'%d-%m-%Y') = ". "'" .date('d-m-Y'). "'")
+            ->count();
     }
 }

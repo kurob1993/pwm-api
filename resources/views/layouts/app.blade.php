@@ -96,6 +96,12 @@
                                 <a class="dropdown-item" href="{{ route('message.show') }}">All Message</a>
                             </div>
                         </li>
+                        <li class="nav-item {{ Request::is('message') ? 'active' : '' }}">
+                            <span class="badge badge-pill badge-info">
+                                Message quota: 
+                                {{ Auth::user()->messageQuota() - Auth::user()->messages()->messagePerDay(Auth::user()->id) }}
+                            </span>
+                        </li>
                         @endif
 
                     </ul>

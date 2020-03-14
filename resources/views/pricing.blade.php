@@ -133,7 +133,7 @@
                                 <hr>
                                 <ul class="fa-ul">
                                     <li> <span class="fa-li"><i class="fas fa-check"></i></span> <strong>Random Number</strong> </li>
-                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Message 10/day</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>Message 100/day</li>
                                     <li><span class="fa-li"><i class="fas fa-times"></i></span>Priority Sending</li>
                                     <li><span class="fa-li"><i class="fas fa-times"></i></span>Free Support</li>
                                 </ul>
