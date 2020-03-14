@@ -22,5 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/message', 'MessageController@index')->name('message');
 Route::post('/message/store', 'MessageController@store')->name('message.store');
+Route::get('/message/show', 'MessageController@show')->name('message.show');
 Route::get('/users', 'UserController@index')->name('users');
 Route::put('/users/update/priority/{id}', 'UserController@updatePriority')->name('update.priority');

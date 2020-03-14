@@ -53,4 +53,14 @@ class MessageController extends Controller
         return redirect()->back()->with('status', 'data entered successfully');
     }
 
+    public function show()
+    {
+        if (!Auth::User()->is_admin) {
+            return redirect('home')->with('status', 'You do not have access');
+        }
+        
+        $message = Message::paginate(10);
+        return view('message', ['message' => $message]);
+    }
+
 }
