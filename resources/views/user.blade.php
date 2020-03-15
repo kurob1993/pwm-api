@@ -22,6 +22,7 @@
                                 <th>Email</th>
                                 <th>Is Admin</th>
                                 <th>Action</th>
+                                <th>Quota</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +46,11 @@
                                                 Switch to Priority</button>
                                             @endif
                                         </form>
-                                        
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-pill badge-success">
+                                        {{ $item->messageQuota() - $item->messages()->messagePerDay($item->id) }}
+                                        </span>
                                     </td>
                                 </tr>
                             @endforeach

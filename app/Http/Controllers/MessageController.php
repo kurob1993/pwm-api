@@ -18,7 +18,9 @@ class MessageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $message = Message::where('user_id',$user->id)->paginate(10);
+        $message = Message::where('user_id',$user->id)
+        ->orderBy('created_at','desc')
+        ->paginate(10);
 
         return view('message', ['message' => $message]);
     }
@@ -65,7 +67,7 @@ class MessageController extends Controller
             return redirect('home')->with('status', 'You do not have access');
         }
         
-        $message = Message::paginate(10);
+        $message = Message::orderBy('created_at','desc')->paginate(10);
         return view('message', ['message' => $message]);
     }
 
