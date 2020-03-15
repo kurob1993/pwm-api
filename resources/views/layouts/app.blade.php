@@ -23,7 +23,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    @stack('style')
     <style>
         /* Rules for sizing the icon. */
         .material-icons.md-18 {
@@ -156,6 +156,8 @@
             @yield('content')
         </main>
     </div>
+
+    @stack('scripts')
 </body>
 
 </html>

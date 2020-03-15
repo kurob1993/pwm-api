@@ -1,35 +1,85 @@
 @extends('layouts.app')
+@push('style')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css" rel="stylesheet" />
+@endpush
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
+@endpush
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        
-        <div class="col-md-8">
+
+        <div class="col-md">
             @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-            <div class="card">
-                <div class="card-header">API KEY</div>
-
-                <div class="card-body">
-                    <code>{{ $user->api_token }}</code>
-                </div>
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
             </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8 mt-3">
-            <div class="card">
-                <div class="card-header">USAGE</div>
+            @endif
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                API KEY
+                            </button>
+                        </h5>
+                    </div>
 
-                <div class="card-body">
-                    <code>
-                        curl --location --request POST 'https://pwm.kurob.web.id/api/v1/message/store?number=628992141874&text=TEST%20API%20WA%203' \
-                        --header 'Accept: application/json' \
-                        --header 'Authorization: Bearer **api key** '
-                    </code>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <code>{{ $user->api_token }}</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                USAGE SEND MESSAGE
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                        href="#nav-home" role="tab" aria-controls="nav-home"
+                                        aria-selected="true">HTTP</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                        href="#nav-profile" role="tab" aria-controls="nav-profile"
+                                        aria-selected="false">JavaScript - jQuery</a>
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
+                                        href="#nav-contact" role="tab" aria-controls="nav-contact"
+                                        aria-selected="false">PHP - cURL</a>
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-go"
+                                        role="tab" aria-controls="nav-contact" aria-selected="false">GO- Native</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
+                                    @include('usage.send.http')
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab">
+                                    @include('usage.send.js')
+                                </div>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab">
+                                    @include('usage.send.php')
+                                </div>
+                                <div class="tab-pane fade" id="nav-go" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab">
+                                    @include('usage.send.go')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
