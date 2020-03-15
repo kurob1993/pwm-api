@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="PWM adalah provide penyedia jasa pengirim chat whatsapp / whatsapp sender / whatsapp api">
+    <meta name="keywords" content="whatsapp, whatsapp sender, whatsapp api">
+    <meta name="author" content="Kurob">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->

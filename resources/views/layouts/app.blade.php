@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="PWM adalah provide penyedia jasa pengirim chat whatsapp / whatsapp sender / whatsapp api">
+    <meta name="keywords" content="whatsapp, whatsapp sender, whatsapp api">
+    <meta name="author" content="Kurob">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -98,7 +101,7 @@
                         </li>
                         <li class="nav-item {{ Request::is('message') ? 'active' : '' }}">
                             <span class="badge badge-pill badge-info">
-                                Message quota: 
+                                Message quota:
                                 {{ Auth::user()->messageQuota() - Auth::user()->messages()->messagePerDay(Auth::user()->id) }}
                             </span>
                         </li>
@@ -110,13 +113,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
                         @endif
                         @else
                         <li class="nav-item dropdown">
@@ -143,7 +146,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('pricing') }}">Pricing</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
