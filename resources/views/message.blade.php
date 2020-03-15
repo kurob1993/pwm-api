@@ -31,6 +31,7 @@
                     </div>
                     @endif
                     
+                    <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
@@ -55,7 +56,8 @@
                             @endforeach
                         </tbody>
                     </table>
-
+                    </div>
+                    
                     <div class="d-flex justify-content-center">
                         {{ $message->links() }}
                     </div>
