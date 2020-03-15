@@ -137,6 +137,7 @@
                                 <ul class="fa-ul">
                                     <li> <span class="fa-li"><i class="fas fa-check"></i></span> <strong>Random Number</strong> </li>
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span>Message 100/day</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>API Access</li>
                                     <li><span class="fa-li"><i class="fas fa-times"></i></span>Priority Sending</li>
                                     <li><span class="fa-li"><i class="fas fa-times"></i></span>Free Support</li>
                                 </ul>
@@ -157,6 +158,7 @@
                                 <ul class="fa-ul">
                                     <li> <span class="fa-li"><i class="fas fa-check"></i></span> <strong>Random Number</strong> </li>
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span>Message 1000/day</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>API Access</li>
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span>Priority Sending</li>
                                     <li><span class="fa-li"><i class="fas fa-times"></i></span>Free Support</li>
                                 </ul>
@@ -174,6 +176,7 @@
                                 <ul class="fa-ul">
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Random/Specific Number</strong></li>
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span>Message 2000/day</li>
+                                    <li><span class="fa-li"><i class="fas fa-check"></i></span>API Access</li>
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span>Priority Sending</li>
                                     <li><span class="fa-li"><i class="fas fa-check"></i></span>Free Support</li>
                                     
