@@ -43,7 +43,7 @@
                             </button>
                         </h5>
                     </div>
-                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -76,6 +76,53 @@
                                 <div class="tab-pane fade" id="nav-go" role="tabpanel"
                                     aria-labelledby="nav-contact-tab">
                                     @include('usage.send.go')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                aria-expanded="false" aria-controls="collapseThree">
+                                USAGE GET LOCATION
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="location-http-tab" data-toggle="tab"
+                                        href="#location-http" role="tab" aria-controls="location-http"
+                                        aria-selected="true">HTTP</a>
+                                    <a class="nav-item nav-link" id="location-js-tab" data-toggle="tab"
+                                        href="#location-js" role="tab" aria-controls="location-js"
+                                        aria-selected="false">JavaScript - jQuery</a>
+                                    <a class="nav-item nav-link" id="location-php-tab" data-toggle="tab"
+                                        href="#location-php" role="tab" aria-controls="location-php"
+                                        aria-selected="false">PHP - cURL</a>
+                                    <a class="nav-item nav-link" id="location-go-tab" data-toggle="tab" href="#location-go"
+                                        role="tab" aria-controls="location-go" aria-selected="false">GO- Native</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="location-http" role="tabpanel"
+                                    aria-labelledby="location-http-tab">
+                                    @include('usage.location.http')
+                                </div>
+                                <div class="tab-pane fade" id="location-js" role="tabpanel"
+                                    aria-labelledby="location-js-tab">
+                                    @include('usage.location.js')
+                                </div>
+                                <div class="tab-pane fade" id="location-php" role="tabpanel"
+                                    aria-labelledby="location-php-tab">
+                                    @include('usage.location.php')
+                                </div>
+                                <div class="tab-pane fade" id="location-go" role="tabpanel"
+                                    aria-labelledby="location-go-tab">
+                                    @include('usage.location.go')
                                 </div>
                             </div>
                         </div>

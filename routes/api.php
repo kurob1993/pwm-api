@@ -27,5 +27,6 @@ Route::prefix('v1')->group(function () {
         Route::get('message/show', 'Api\MessageController@show');
         Route::get('message/sending', 'Api\MessageController@sending');
         Route::post('message/sended', 'Api\MessageController@sended');
+        Route::get('maps/location/{long?}/{lat?}', 'Api\Maps@location');
     });
 });

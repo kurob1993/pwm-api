@@ -57,7 +57,9 @@ class AuthController extends Controller
             $user->api_token = $user->createToken('PWM API')->accessToken;
             $user->save();
 
-            return response()->json(['success' => $success], $this->successStatus);
+            return response()->json([
+                'data' => $user
+            ], $this->successStatus);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
