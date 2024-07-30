@@ -6,7 +6,7 @@ services:
             - 'host.docker.internal:host-gateway'
         restart: always
         ports:
-            - '8002:8000'
+            - '80:8000'
         environment:
             CONTAINER_ROLE: 'app'
             WWWUSER: '${WWWUSER}'
@@ -29,6 +29,26 @@ services:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
             timeout: 5s
+    mysql:
+        image: 'mysql/mysql-server:8.0'
+        restart: always
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '4Q0x12pEEK8mfA'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - 'mysql-data:/var/lib/mysql'
+        networks:
+            - sail
+        healthcheck:
+            test:
+                - CMD
+                - mysqladmin
+                - ping
+            retries: 3
+            timeout: 5s
 networks:
     sail:
         driver: bridge
@@ -36,4 +56,6 @@ networks:
             com.docker.network.driver.mtu: 1400
 volumes:
     sail-redis:
+        driver: local
+    mysql-data:
         driver: local
