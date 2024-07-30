@@ -39,7 +39,7 @@ class MessageController extends Controller
         if (!$user->canSendMessage()) {
             return response()->json(['error' => 'Your quota is limit'], 401);
         }
-        
+
         $success =  $request->input();
         $success['user_id'] =  $user->id;
         $success['stage_id'] =  1;
@@ -66,7 +66,7 @@ class MessageController extends Controller
 
         if ($priority->priority) {
             $message = Message::where('user_id', $user->id)
-                ->where('stage_id', 1)
+                ->whereIn('stage_id', [1])
                 ->first();
         }else{
             $message = Message::select( 'messages.*')
@@ -75,7 +75,7 @@ class MessageController extends Controller
                 ->orderBy('priorities.priority','DESC')
                 ->first();
         }
-        
+
         if ($message) {
             $msg = Message::find($message->id);
             $msg->stage_id = 2;

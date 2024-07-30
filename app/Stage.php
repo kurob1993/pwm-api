@@ -26,6 +26,12 @@ class Stage extends Model
             case 3:
                 $label = '<span class="badge badge-success">'.$this->text.'</span>';
                 break;
+            case 4:
+                $label = '<span class="badge badge-danger">'.$this->text.'</span>';
+                break;
+            default:
+                $label = '<span class="badge badge-primary">-</span>';
+                break;
         }
 
         return $label;

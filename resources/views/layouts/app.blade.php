@@ -143,10 +143,6 @@
                         </li>
                         @endguest
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pricing') }}">Pricing</a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
