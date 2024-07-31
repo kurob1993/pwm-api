@@ -61,20 +61,11 @@ class MessageController extends Controller
 
     public function sending()
     {
-        $user = Auth::user();
-        $priority = Auth::user()->priority;
-
-        if ($priority->priority) {
-            $message = Message::where('user_id', $user->id)
-                ->whereIn('stage_id', [1])
-                ->first();
-        }else{
-            $message = Message::select( 'messages.*')
-                ->join('priorities', 'priorities.user_id', '=', 'messages.user_id')
-                ->where('messages.stage_id',1)
-                ->orderBy('priorities.priority','DESC')
-                ->first();
-        }
+        $message = Message::select( 'messages.*')
+            ->leftJoin('priorities', 'priorities.user_id', '=', 'messages.user_id')
+            ->where('messages.stage_id',1)
+            ->orderBy('priorities.priority','DESC')
+            ->first();
 
         if ($message) {
             $msg = Message::find($message->id);
